@@ -1,0 +1,92 @@
+@import '~reset-css/_reset';
+
+#image-container {
+  width: 80%;
+
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+
+  #image-wrapper {
+    position: relative;
+    display: inline-block;
+
+    img { max-width: 100%; }
+
+    &.no-image {
+      width: 600px;
+      height: 300px;
+
+      background-color: silver;
+
+      &::before {
+        font-size: 16px;
+        line-height: 300px;
+
+        content: 'No image';
+        display: inline-block;
+        font-family: 'Arial';
+        font-weight: 900;
+        color: #333;
+      }
+
+      img { display: none; }
+    }
+  }
+}
+
+  .face {
+    position: absolute;
+    border: 2px solid;
+
+    &.male {
+      border-color: dodgerblue;
+
+      .face-data {
+        background-color: dodgerblue;
+      }
+    }
+    &.female {
+      border-color: hotpink;
+
+      .face-data {
+        background-color: hotpink;
+      }
+    }
+  }
+
+  .face-data {
+    width: 100%;
+    padding: 2px;
+
+    position: absolute;
+    top: 100%;
+    left: -2px;
+    color: #FFF;
+    text-align: left;
+    font-family: 'Arial';
+    font-size: 12px;
+  }
+    .face-data-item {
+      padding: 0 5px;
+      line-height: 1.2;
+
+      strong {
+        font-weight: 900;
+      }
+    }
+
+.content {
+  font-family: 'Arial';
+  font-size: 16px;
+  padding: 10px 20px;
+
+  &.error {
+    color: darkred;
+  }
+
+  label,
+  input {
+    margin-right: 10px;
+  }
+}

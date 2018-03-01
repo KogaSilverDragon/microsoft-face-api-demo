@@ -1,0 +1,43 @@
+<div id="image-container">
+  <div id="image-wrapper"
+       [ngClass]="{ 'no-image': invalidImage }">
+    <img [src]="imageUrl"
+         #imageSource
+         (load)="refreshImageSource()"
+         (error)="disableDetect()">
+    <div *ngFor="let face of facesData"
+         class="face {{face.faceAttributes.gender}}"
+         [ngStyle]="{
+           'width.px': face.faceRectangle.width * getClientSizeRatio().width,
+           'height.px': face.faceRectangle.height * getClientSizeRatio().height,
+           'top.px': face.faceRectangle.top * getClientSizeRatio().height,
+           'left.px': face.faceRectangle.left * getClientSizeRatio().width
+         }">
+      <ul class="face-data">
+        <li class="face-data-item">
+          <strong>Gender:</strong> {{face.faceAttributes.gender}}
+        </li>
+        <li class="face-data-item">
+          <strong>Age:</strong> {{face.faceAttributes.age}}
+        </li>
+        <li class="face-data-item">
+          <strong>Emotion:</strong> {{getEmotion(face.faceAttributes.emotion)}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+<div class="content" *ngIf="!facesData">
+  <label for="image-url">Image URL:</label>
+  <input id="image-url"
+         type="text"
+         [(ngModel)]="imageUrl"/>
+  <button (click)="detect()"
+          [disabled]="invalidImage">Detect faces!</button>
+</div>
+<div class="content" *ngIf="facesData">
+  <button (click)="reset()">Change image!</button>
+</div>
+<div class="content error" *ngIf="error">
+  Error: {{error.code}} - {{error.message}}
+</div>
