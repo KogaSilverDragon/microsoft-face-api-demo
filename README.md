@@ -4,6 +4,9 @@ Just a simple demo using the Microsoft Face API to try it out!
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
 
+## Configuration
+In order to the Face API work properly, you must include your subscription key on `environment.ts` and `environment.prod.ts` files located in `src/environments/` directory.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
